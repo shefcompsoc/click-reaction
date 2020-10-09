@@ -1,3 +1,5 @@
+import random
+
 import pygame
 
 # Constants
@@ -11,6 +13,12 @@ pygame.init()  # Initialises all the standard pygame modules
 
 def distance(pos1, pos2):
     return ((pos2[0] - pos1[0]) ** 2 + (pos2[1] - pos1[1]) ** 2) ** 0.5
+
+
+def random_target_center():
+    x = random.randint(RADIUS, SCREEN_SIZE[0] - RADIUS)
+    y = random.randint(RADIUS, SCREEN_SIZE[1] - RADIUS)
+    return (x, y)
 
 
 def main():
@@ -28,7 +36,7 @@ def main():
                 break  # Break the for loop only
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 if distance(target_center, event.pos) <= RADIUS:
-                    print("Mouse clicked")
+                    target_center = random_target_center()
         if running:
             display.fill(BACKGROUND_COLOR)
             pygame.draw.circle(display, FOREGROUND_COLOR, target_center, RADIUS)
