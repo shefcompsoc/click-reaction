@@ -22,6 +22,8 @@ def main():
             if event.type == pygame.QUIT:
                 running = False  # Game loop is no longer running
                 break  # Break the for loop only
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                print("Mouse clicked")
         if running:
             display.fill(BACKGROUND_COLOR)
             pygame.draw.circle(display, FOREGROUND_COLOR, target_center, RADIUS)
