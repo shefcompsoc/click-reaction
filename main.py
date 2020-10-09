@@ -2,6 +2,7 @@ import pygame
 
 # Constants
 SCREEN_SIZE = (800, 600)
+BACKGROUND_COLOR = (70, 70, 70)
 
 pygame.init()  # Initialises all the standard pygame modules
 
@@ -18,6 +19,9 @@ def main():
             if event.type == pygame.QUIT:
                 running = False  # Game loop is no longer running
                 break  # Break the for loop only
+        if running:
+            display.fill(BACKGROUND_COLOR)
+            pygame.display.update()
     # Unload all pygame modules
     # Makes it IDLE-friendly
     pygame.quit()
