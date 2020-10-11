@@ -6,6 +6,7 @@ import pygame
 SCREEN_SIZE = (800, 600)
 BACKGROUND_COLOR = (70, 70, 70)
 FOREGROUND_COLOR = (20, 200, 90)
+RED = (255, 0, 0)
 RADIUS = 20
 INITIAL_TIME_LIMIT = 2000
 
@@ -48,9 +49,10 @@ def main():
             millis = clock.tick()  # Get number of milliseconds since last call
             time_elapsed += millis
             if time_elapsed >= time_limit:
-                print("Game over")
-                running = False
-            pygame.draw.circle(display, FOREGROUND_COLOR, target_center, RADIUS)
+                target_color = RED
+            else:
+                target_color = FOREGROUND_COLOR
+            pygame.draw.circle(display, target_color, target_center, RADIUS)
             pygame.display.update()
     # Unload all pygame modules
     # Makes it IDLE-friendly
