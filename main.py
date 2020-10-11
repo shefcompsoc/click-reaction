@@ -24,6 +24,7 @@ def random_target_center():
 def main():
     # Set the size of the display, and get the display surface
     display = pygame.display.set_mode(SCREEN_SIZE)
+    clock = pygame.time.Clock()  # Allows timekeeping
     target_center = (200, 200)  # Coords for the center of the circle
 
     running = True  # Stores whether the game is running or not
@@ -39,6 +40,10 @@ def main():
                     target_center = random_target_center()
         if running:
             display.fill(BACKGROUND_COLOR)
+
+            millis = clock.tick()  # Get number of milliseconds since last call
+            print(millis)
+
             pygame.draw.circle(display, FOREGROUND_COLOR, target_center, RADIUS)
             pygame.display.update()
     # Unload all pygame modules
