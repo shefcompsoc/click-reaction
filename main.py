@@ -7,6 +7,7 @@ SCREEN_SIZE = (800, 600)
 BACKGROUND_COLOR = (70, 70, 70)
 FOREGROUND_COLOR = (20, 200, 90)
 RADIUS = 20
+INITIAL_TIME_LIMIT = 2000
 
 pygame.init()  # Initialises all the standard pygame modules
 
@@ -26,6 +27,8 @@ def main():
     display = pygame.display.set_mode(SCREEN_SIZE)
     clock = pygame.time.Clock()  # Allows timekeeping
     target_center = (200, 200)  # Coords for the center of the circle
+    time_limit = INITIAL_TIME_LIMIT
+    time_elapsed = 0
 
     running = True  # Stores whether the game is running or not
 
@@ -38,12 +41,15 @@ def main():
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 if distance(target_center, event.pos) <= RADIUS:
                     target_center = random_target_center()
+                    time_elapsed = 0
         if running:
             display.fill(BACKGROUND_COLOR)
 
             millis = clock.tick()  # Get number of milliseconds since last call
-            print(millis)
-
+            time_elapsed += millis
+            if time_elapsed >= time_limit:
+                print("Game over")
+                running = False
             pygame.draw.circle(display, FOREGROUND_COLOR, target_center, RADIUS)
             pygame.display.update()
     # Unload all pygame modules
