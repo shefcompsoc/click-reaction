@@ -44,6 +44,7 @@ def main():
                 if distance(target_center, event.pos) <= RADIUS:
                     target_center = random_target_center()
                     time_elapsed = 0
+                    time_limit *= 0.99
         if running:
             display.fill(BACKGROUND_COLOR)
 
