@@ -30,6 +30,7 @@ def main():
     target_center = (200, 200)  # Coords for the center of the circle
     time_limit = INITIAL_TIME_LIMIT
     time_elapsed = 0
+    game_over = False
 
     running = True  # Stores whether the game is running or not
 
@@ -39,7 +40,7 @@ def main():
             if event.type == pygame.QUIT:
                 running = False  # Game loop is no longer running
                 break  # Break the for loop only
-            elif event.type == pygame.MOUSEBUTTONDOWN:
+            elif event.type == pygame.MOUSEBUTTONDOWN and not game_over:
                 if distance(target_center, event.pos) <= RADIUS:
                     target_center = random_target_center()
                     time_elapsed = 0
@@ -50,6 +51,7 @@ def main():
             time_elapsed += millis
             if time_elapsed >= time_limit:
                 target_color = RED
+                game_over = True
             else:
                 target_color = FOREGROUND_COLOR
             pygame.draw.circle(display, target_color, target_center, RADIUS)
