@@ -31,6 +31,7 @@ def main():
     time_limit = INITIAL_TIME_LIMIT
     time_elapsed = 0
     game_over = False
+    score = 0
 
     running = True  # Stores whether the game is running or not
 
@@ -45,6 +46,8 @@ def main():
                     target_center = random_target_center()
                     time_elapsed = 0
                     time_limit *= 0.99
+                    score += 1
+                    print(score)
         if running:
             display.fill(BACKGROUND_COLOR)
 
