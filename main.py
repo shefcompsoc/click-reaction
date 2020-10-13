@@ -50,6 +50,13 @@ def main():
                     time_elapsed = 0
                     time_limit *= 0.99
                     score += 1
+            elif event.type == pygame.KEYDOWN and game_over:
+                if event.key == pygame.K_r:
+                    time_limit = INITIAL_TIME_LIMIT
+                    time_elapsed = 0
+                    game_over = False
+                    score = 0
+                    target_center = random_target_center()
         if running:
             display.fill(BACKGROUND_COLOR)
 
