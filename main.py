@@ -48,7 +48,7 @@ def main():
                 if distance(target_center, event.pos) <= RADIUS:
                     target_center = random_target_center()
                     time_elapsed = 0
-                    time_limit *= 0.99
+                    time_limit *= 0.99  # Reduces time limit by 1% each time
                     score += 1
             elif event.type == pygame.KEYDOWN and game_over:
                 if event.key == pygame.K_r:
@@ -62,11 +62,12 @@ def main():
 
             millis = clock.tick()  # Get number of milliseconds since last call
             time_elapsed += millis
-            if time_elapsed >= time_limit:
+            if time_elapsed >= time_limit:  # Time limit has been exceeded
                 target_color = RED
                 game_over = True
             else:
                 target_color = FOREGROUND_COLOR
+            # Draw the target
             pygame.draw.circle(display, target_color, target_center, RADIUS)
 
             # Drawing the score
