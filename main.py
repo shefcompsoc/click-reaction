@@ -7,10 +7,13 @@ SCREEN_SIZE = (800, 600)
 BACKGROUND_COLOR = (70, 70, 70)
 FOREGROUND_COLOR = (20, 200, 90)
 RED = (255, 0, 0)
+WHITE = (255, 255, 255)
 RADIUS = 20
 INITIAL_TIME_LIMIT = 2000
 
 pygame.init()  # Initialises all the standard pygame modules
+
+FONT = pygame.font.SysFont("", 40)
 
 
 def distance(pos1, pos2):
@@ -47,7 +50,6 @@ def main():
                     time_elapsed = 0
                     time_limit *= 0.99
                     score += 1
-                    print(score)
         if running:
             display.fill(BACKGROUND_COLOR)
 
@@ -59,6 +61,12 @@ def main():
             else:
                 target_color = FOREGROUND_COLOR
             pygame.draw.circle(display, target_color, target_center, RADIUS)
+
+            # Drawing the score
+            text = "Score: " + str(score)  # Need to convert int to str
+            text_surface = FONT.render(text, True, WHITE)  # Render the text
+            display.blit(text_surface, (0, 0))  # Blit the text onto the display
+
             pygame.display.update()
     # Unload all pygame modules
     # Makes it IDLE-friendly
