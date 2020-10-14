@@ -13,6 +13,8 @@ INITIAL_TIME_LIMIT = 2000
 
 pygame.init()  # Initialises all the standard pygame modules
 
+# Empty font name means that pygame fallsback to a default one,
+# making it more portable across different operating systems
 FONT = pygame.font.SysFont("", 40)
 
 
